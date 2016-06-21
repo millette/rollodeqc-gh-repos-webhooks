@@ -3,6 +3,7 @@
 import test from 'ava'
 import fn from './'
 
-test.skip('title', t => {
-  t.is(fn('unicorns'), 'unicorns & rainbows')
+test('title', async t => {
+  const result = await fn('millette')
+  t.truthy(result.length)
 })
