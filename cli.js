@@ -28,7 +28,7 @@ const rollodeqcGhReposWebhooks = require('./')
 
 const cli = meow([
   'Usage',
-  '  $ rollodeqc-gh-repos-webhooks [input]',
+  '  $ rollodeqc-gh-repos-webhooks [username]',
   '',
   'Options',
   '  --foo  Lorem ipsum. [Default: false]',
@@ -40,7 +40,7 @@ const cli = meow([
   '  ponies & rainbows'
 ])
 
-rollodeqcGhReposWebhooks(cli.input[0] || 'unicorns')
+rollodeqcGhReposWebhooks(cli.input[0] || 'millette')
   .then((response) => {
-    console.log(response)
+    console.log(JSON.stringify(response, null, ' '))
   })

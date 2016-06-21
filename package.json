@@ -31,7 +31,9 @@
     "cli"
   ],
   "dependencies": {
+    "gh-got": "^4.0.0",
     "meow": "^3.7.0",
+    "promise-throttle": "^0.2.0",
     "rollodeqc-gh-repos": "^0.1.0"
   },
   "devDependencies": {

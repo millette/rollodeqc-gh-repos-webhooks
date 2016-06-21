@@ -22,12 +22,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 'use strict'
 
-module.exports = function (str, opts) {
-  if (typeof str !== 'string') {
-    throw new TypeError('Expected a string')
-  }
+// npm
+const ghRepos = require('rollodeqc-gh-repos')
+const ghGot = require('gh-got')
+const PromiseThrottle = require('promise-throttle')
 
-  opts = opts || {}
+const throttler = new PromiseThrottle({ requestsPerSecond: 5000 / 3600 })
 
-  return str + ' & ' + (opts.postfix || 'rainbows')
-}
+const doit = (repo) => ghGot(`repos/${repo.full_name}/hooks`)
+  .then((y) => {
+    if (y.body && y.body.length) { repo.hooks = y.body }
+    return repo
+  })
+
+module.exports = (username) => ghRepos(username, true)
+  .then((repos) => repos.filter((v) => !v.fork))
+  .then((repos) => Promise.all(repos.map((x) => throttler.add(doit.bind(this, x)))))
