@@ -45,16 +45,10 @@ rollodeqcGhReposWebhooks(cli.input[0] || 'millette')
   .then((repos) => repos.map((v) => {
     return {
       full_name: v.full_name,
-      hooks: v.hooks
-        // .filter((v) => v.name === 'irc')
-        .map((v) => v.name)
+      hooks: v.hooks.map((v) => v.name)
     }
   }))
   .then((repos) => {
     console.log(JSON.stringify(repos, null, ' '))
   })
-/*
-  .then((response) => {
-    console.log(JSON.stringify(response, null, ' '))
-  })
-*/
+  .catch(console.error)

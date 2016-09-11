@@ -24,17 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // npm
 const ghRepos = require('rollodeqc-gh-repos')
-const ghGot = require('gh-got')
+const rollodeqcGhRepoWebhooks = require('rollodeqc-gh-repo-webhooks')
 const PromiseThrottle = require('promise-throttle')
 
 const throttler = new PromiseThrottle({ requestsPerSecond: 5000 / 3600 })
 
-const doit = (repo) => ghGot(`repos/${repo.full_name}/hooks`)
-  .then((y) => {
-    if (y.body && y.body.length) { repo.hooks = y.body }
-    return repo
-  })
-
 module.exports = (username) => ghRepos(username, true)
   .then((repos) => repos.filter((v) => !v.fork))
-  .then((repos) => Promise.all(repos.map((x) => throttler.add(doit.bind(this, x)))))
+  .then((repos) => Promise.all(repos.map((x) => throttler.add(rollodeqcGhRepoWebhooks.bind(this, x)))))
