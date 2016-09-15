@@ -34,7 +34,7 @@
     "meow": "^3.7.0",
     "promise-throttle": "^0.2.0",
     "rollodeqc-gh-repo-webhooks": "0.0.1",
-    "rollodeqc-gh-repos": "^0.1.1"
+    "rollodeqc-gh-repos": "^0.1.2"
   },
   "devDependencies": {
     "ava": "^0.16.0",
