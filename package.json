@@ -1,6 +1,6 @@
 {
   "name": "rollodeqc-gh-repos-webhooks",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "RoLLodeQc utility to fetch repos webhooks.",
   "license": "AGPL-3.0",
   "repository": "millette/rollodeqc-gh-repos-webhooks",
