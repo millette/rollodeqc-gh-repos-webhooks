@@ -29,6 +29,6 @@ const PromiseThrottle = require('promise-throttle')
 
 const throttler = new PromiseThrottle({ requestsPerSecond: 5000 / 3600 })
 
-module.exports = (username) => ghRepos(username, true)
+module.exports = (username) => ghRepos(username, true, 'owner')
   .then((repos) => repos.filter((v) => !v.fork))
   .then((repos) => Promise.all(repos.map((x) => throttler.add(rollodeqcGhRepoWebhooks.bind(this, x)))))
