@@ -31,7 +31,7 @@
     "cli"
   ],
   "dependencies": {
-    "meow": "^3.7.0",
+    "meow": "^5.0.0",
     "promise-throttle": "^1.0.1",
     "rollodeqc-gh-repo-webhooks": "^1.0.0",
     "rollodeqc-gh-repos": "^1.0.0"
