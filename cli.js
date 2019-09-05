@@ -26,19 +26,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const meow = require('meow')
 const rollodeqcGhReposWebhooks = require('./')
 
-const cli = meow([
-  'Usage',
-  '  $ rollodeqc-gh-repos-webhooks [username]',
-  '',
-  'Options',
-  '  --foo  Lorem ipsum. [Default: false]',
-  '',
-  'Examples',
-  '  $ rollodeqc-gh-repos-webhooks',
-  '  unicorns & rainbows',
-  '  $ rollodeqc-gh-repos-webhooks ponies',
-  '  ponies & rainbows'
-])
+const cli = meow(`
+  Usage
+    $ rollodeqc-gh-repos-webhooks [username]
+
+  Options
+    --foo  Lorem ipsum. [Default: false]
+
+  Examples
+    $ rollodeqc-gh-repos-webhooks
+    unicorns & rainbows
+    $ rollodeqc-gh-repos-webhooks ponies
+    ponies & rainbows
+`)
 
 rollodeqcGhReposWebhooks(cli.input[0] || 'millette')
   .then((repos) => repos.filter((v) => v.hooks && v.hooks.length))
